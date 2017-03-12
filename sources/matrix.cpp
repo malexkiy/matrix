@@ -1,7 +1,7 @@
 #include "matrix.h"
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
+#include <cstring>
 using std::cout;
 using std::endl;
 using std::ios_base;
