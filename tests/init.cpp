@@ -5,20 +5,20 @@
 #include <fstream>
 
 SCENARIO("matrix init", "[init]") {
-	matrix m;
+	Matrix m;
 	REQUIRE(m.rows() == 0);
 	REQUIRE(m.columns() == 0);
 }
 
 SCENARIO("matrix init params", "[init params]") {
 	int r = 3, c = 4;
-	matrix m(r, c);
+	Matrix m(r, c);
 	REQUIRE(m.rows() == r);
 	REQUIRE(m.columns() == c);
 }
 
 SCENARIO("matrix fill", "[fill]") {
-	matrix m;
+	Matrix m;
 	ifstream f("a.mtx", std::ios_base::binary);
 	int r, c, *data;
 
@@ -39,7 +39,7 @@ SCENARIO("matrix fill", "[fill]") {
 
 SCENARIO("matrix op==", "[op==]") {
 	std::sstream ssa, ssb;
-	matrix a, b;
+	Matrix a, b;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
 	ssb << "3 3 1 2 3 4 5 6 7 8 9";
@@ -57,7 +57,7 @@ SCENARIO("matrix op==", "[op==]") {
 
 SCENARIO("matrix op+", "[op+]") {
 	std::sstream ssa, ssb, ssc;
-	matrix a, b, c;
+	Matrix a, b, c;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
 	ssb << "3 3 10 11 12 13 14 15 16 17 18";
@@ -71,7 +71,7 @@ SCENARIO("matrix op+", "[op+]") {
 
 SCENARIO("matrix op*", "[op*]") {
 	std::sstream ssa, ssb, ssc;
-	matrix a, b, c;
+	Matrix a, b, c;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
 	ssb << "3 3 10 11 12 13 14 15 16 17 18";
@@ -88,7 +88,7 @@ SCENARIO("matrix op*", "[op*]") {
 
 SCENARIO("matrix op=", "[op=]") {
 	std::sstream ssa;
-	matrix a, b;
+	Matrix a, b;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
 
