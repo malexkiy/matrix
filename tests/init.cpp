@@ -19,7 +19,7 @@ SCENARIO("matrix init params", "[init params]") {
 
 SCENARIO("matrix fill", "[fill]") {
 	Matrix m;
-	ifstream f("a.mtx", std::ios_base::binary);
+	std::ifstream f("a.mtx", std::ios_base::binary);
 	int r, c, *data;
 
 	m.fill("a.mtx");
