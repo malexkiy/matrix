@@ -1,7 +1,7 @@
 #include <matrix.h>
 #include <catch.hpp>
 #include <sstream>
-#include <cstdlib>
+#include <cstring>
 #include <fstream>
 
 SCENARIO("matrix init", "[init]") {
