@@ -19,10 +19,10 @@ SCENARIO("matrix init params", "[init params]") {
 
 SCENARIO("matrix fill", "[fill]") {
 	Matrix m;
+	m.fill("/home/travis/build/malexkiy/matrix/build/tests/a.mtx");
+	
 	std::ifstream f("/home/travis/build/malexkiy/matrix/build/tests/a.mtx", std::ios_base::binary);
 	int r, c, *data;
-
-	m.fill("/home/travis/build/malexkiy/matrix/build/tests/a.mtx");
 
 	f >> r >> c;
 	f.read((char*)data, r * c * sizeof(data[0]));
