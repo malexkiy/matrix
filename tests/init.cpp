@@ -31,14 +31,14 @@ SCENARIO("matrix fill", "[fill]") {
 	REQUIRE(m.rows() == r);
 	REQUIRE(m.columns() == c);
 
-	for (int i = 0; i < a.rows(); i++)
+	for (int i = 0; i < m.rows(); i++)
 	{
 		REQUIRE(memcmp(m.getRow(i + 1), data + i*c, m.columns()*sizeof(int)) == 0);
 	}
 }
 
 SCENARIO("matrix op==", "[op==]") {
-	std::sstream ssa, ssb;
+	std::stringstream ssa, ssb;
 	Matrix a, b;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
@@ -56,7 +56,7 @@ SCENARIO("matrix op==", "[op==]") {
 }
 
 SCENARIO("matrix op+", "[op+]") {
-	std::sstream ssa, ssb, ssc;
+	std::stringstream ssa, ssb, ssc;
 	Matrix a, b, c;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
@@ -70,7 +70,7 @@ SCENARIO("matrix op+", "[op+]") {
 }
 
 SCENARIO("matrix op*", "[op*]") {
-	std::sstream ssa, ssb, ssc;
+	std::stringstream ssa, ssb, ssc;
 	Matrix a, b, c;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
@@ -87,7 +87,7 @@ SCENARIO("matrix op*", "[op*]") {
 }
 
 SCENARIO("matrix op=", "[op=]") {
-	std::sstream ssa;
+	std::stringstream ssa;
 	Matrix a, b;
 
 	ssa << "3 3 1 2 3 4 5 6 7 8 9";
