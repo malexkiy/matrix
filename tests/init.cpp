@@ -55,6 +55,8 @@ SCENARIO("matrix fill", "[fill]") {
 	int *data;
 	size_t r, c;
 
+	file.read((char*)&r, sizeof(r));
+	file.read((char*)&c, sizeof(c));
 	f.read((char*)data, r * c * sizeof(data[0]));
 	f.close();
 
