@@ -21,8 +21,10 @@ SCENARIO("matrix init params", "[init params]") {
 SCENARIO("matrix fill", "[fill]") {
 	Matrix m;
 	
-	int ldata[] = { 3, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	int bdata[] = { 0x03000000, 0x03000000, 0x01000000, 0x02000000, 0x03000000, 0x04000000, 0x05000000, 0x06000000, 0x07000000, 0x08000000, 0x09000000 };
+	size_t ls[] = { 3, 3 };
+	size_t bs[] = { 0x0300000000000000, 0x0300000000000000 };
+	int ldata[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int bdata[] = { 0x01000000, 0x02000000, 0x03000000, 0x04000000, 0x05000000, 0x06000000, 0x07000000, 0x08000000, 0x09000000 };
 	const int T = 0xFFEEFFEE;
 	int t = 0;
 	std::ofstream otf("t.t", std::ios_base::binary);
@@ -35,12 +37,14 @@ SCENARIO("matrix fill", "[fill]") {
 	std::ofstream of("a.mtx", std::ios_base::binary);
 	if (t == T)
 	{
-		of.write((const char*)(ldata), 11 * sizeof(int));
+		of.write((const char*)(ls), 2 * sizeof(size_t));
+		of.write((const char*)(ldata), 9 * sizeof(int));
 		std::cerr << "little" << std::endl;
 	}
 	else
 	{
-		of.write((const char*)(bdata), 11 * sizeof(int));
+		of.write((const char*)(bs), 2 * sizeof(size_t));
+		of.write((const char*)(bdata), 9 * sizeof(int));
 		std::cerr << "big" << std::endl;
 	}
 	of.close();
