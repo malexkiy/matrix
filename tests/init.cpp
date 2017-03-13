@@ -20,10 +20,30 @@ SCENARIO("matrix init params", "[init params]") {
 SCENARIO("matrix fill", "[fill]") {
 	Matrix m;
 	
-	int fdata[] = { 3, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-	std::ofstream of("a.mtx", std::ios_base::binary);
-	of.write(reinterpret_cast<const char*>(fdata), 11 * sizeof(fdata[0]));
+	int ldata[] = { 3, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int bdata[] = { 0x03000000, 0x03000000, 0x01000000, 0x02000000, 0x03000000, 0x04000000, 0x05000000, 0x06000000, 0x07000000, 0x08000000, 0x09000000 };
+	const int T = 0xFFEEFFEE;
+	int t = 0;
+	std::ofstream otf("t.t", std::ios_base::binary);
+	otf.write((const char*)&T, sizeof(T));
+	otf.close();
+	std::ifstream itf("t.t", std::ios_base::binary);
+	itf.read((char*)&t, sizeof(t));
+	itf.close();
+
+	std::ofstream of("c.mtx", std::ios_base::binary);
+	if (t == T)
+	{
+		of.write((const char*)(ldata), 11 * sizeof(int));
+		std::cerr << "little" << std::endl;
+	}
+	else
+	{
+		of.write((const char*)(bdata), 11 * sizeof(int));
+		std::cerr << "big" << std::endl;
+	}
 	of.close();
+	
 	m.fill("a.mtx");
 	
 	std::ifstream f("a.mtx", std::ios_base::binary);
