@@ -67,17 +67,15 @@ void Matrix::fill(const char* fileName)
 		throw "Failed to open file\n";
 
 	size_t r, c, size;
-	file.read((char*)&r, sizeof(int));
-	file.read((char*)&c, sizeof(int));
-	size = 2 * sizeof(int) + r * c * sizeof(_data[0]);
-	
-	std::cout<<std::hex<<r<<" "<<c;
+	file.read((char*)&r, sizeof(r));
+	file.read((char*)&c, sizeof(c));
+	size = 2 * sizeof(size_t) + r * c * sizeof(_data[0]);
 
 	file.seekg(0, ios_base::end);
 	if (size != file.tellg())
 		throw "Invalid file!\n";
 
-	file.seekg(2 * sizeof(int));
+	file.seekg(2 * sizeof(size_t));
 	
 	delete[] _data;
 	_rows = r;
