@@ -3,6 +3,7 @@
 #include <sstream>
 #include <cstring>
 #include <fstream>
+#include <iostream>
 
 SCENARIO("matrix init", "[init]") {
 	Matrix m;
