@@ -19,13 +19,15 @@ SCENARIO("matrix init params", "[init params]") {
 
 SCENARIO("matrix fill", "[fill]") {
 	Matrix m;
-	//m.fill("/home/travis/build/malexkiy/matrix/build/tests/a.mtx");
 	
-	std::ofstream f1("test.f");
-	f1<<1;
-	f1.close();
-	//std::ifstream f("/home/travis/build/malexkiy/matrix/build/tests/a.mtx", std::ios_base::binary);
-	/*int r, c, *data;
+	int fdata[] = { 3, 3, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	std::ofstream of("a.mtx", std::ios_base::binary);
+	of.write(reinterpret_cast<const char*>(fdata), 11 * sizeof(fdata[0]));
+	of.close();
+	m.fill("a.mtx");
+	
+	std::ifstream f("a.mtx", std::ios_base::binary);
+	int r, c, *data;
 
 	f >> r >> c;
 	f.read((char*)data, r * c * sizeof(data[0]));
@@ -37,7 +39,7 @@ SCENARIO("matrix fill", "[fill]") {
 	for (int i = 0; i < m.rows(); i++)
 	{
 		REQUIRE(memcmp(m.getRow(i + 1), data + i*c, m.columns()*sizeof(int)) == 0);
-	}*/
+	}
 }
 
 SCENARIO("matrix op==", "[op==]") {
