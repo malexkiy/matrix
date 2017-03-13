@@ -70,6 +70,8 @@ void Matrix::fill(const char* fileName)
 	file.read((char*)&r, sizeof(r));
 	file.read((char*)&c, sizeof(c));
 	size = 2 * sizeof(size_t) + r * c * sizeof(_data[0]);
+	
+	std::cout<<std::hex<<r<<" "<<c;
 
 	file.seekg(0, ios_base::end);
 	if (size != file.tellg())
