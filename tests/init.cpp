@@ -57,6 +57,9 @@ SCENARIO("matrix fill", "[fill]") {
 
 	f.read((char*)&r, sizeof(r));
 	f.read((char*)&c, sizeof(c));
+	
+	data = new int[r*c]();
+	
 	f.read((char*)data, r * c * sizeof(data[0]));
 	f.close();
 
