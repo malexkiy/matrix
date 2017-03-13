@@ -35,13 +35,13 @@ SCENARIO("matrix fill", "[fill]") {
 	std::ofstream of("a.mtx", std::ios_base::binary);
 	if (t == T)
 	{
-		of.write((const char*)(bdata), 11 * sizeof(int));
-		std::cerr << "big" << std::endl;
+		of.write((const char*)(ldata), 11 * sizeof(int));
+		std::cerr << "little" << std::endl;
 	}
 	else
 	{
-		of.write((const char*)(ldata), 11 * sizeof(int));
-		std::cerr << "little" << std::endl;
+		of.write((const char*)(bdata), 11 * sizeof(int));
+		std::cerr << "big" << std::endl;
 	}
 	of.close();
 	
