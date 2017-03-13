@@ -52,9 +52,9 @@ SCENARIO("matrix fill", "[fill]") {
 	m.fill("a.mtx");
 	
 	std::ifstream f("a.mtx", std::ios_base::binary);
-	int r, c, *data;
+	int *data;
+	size_t r, c;
 
-	f >> r >> c;
 	f.read((char*)data, r * c * sizeof(data[0]));
 	f.close();
 
