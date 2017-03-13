@@ -32,7 +32,7 @@ SCENARIO("matrix fill", "[fill]") {
 	itf.read((char*)&t, sizeof(t));
 	itf.close();
 
-	std::ofstream of("c.mtx", std::ios_base::binary);
+	std::ofstream of("a.mtx", std::ios_base::binary);
 	if (t == T)
 	{
 		of.write((const char*)(ldata), 11 * sizeof(int));
